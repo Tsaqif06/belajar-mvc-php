@@ -23,6 +23,12 @@ class Siswa extends Controller
     public function tambah()
     {
         if ($this->model('Siswa_model')->tambahDataSiswa($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Ditambahkan', 'success');
+            header('Location: ' . BASEURL . 'siswa');
+            exit;
+        }
+        else {
+            Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');
             header('Location: ' . BASEURL . 'siswa');
             exit;
         }

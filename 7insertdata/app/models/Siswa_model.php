@@ -16,14 +16,14 @@ class Siswa_model
         return $this->db->resultSet();
     }
 
-    public function getSiswaById($id) 
+    public function getSiswaById($id)
     {
         $this->db->query("SELECT * FROM {$this->table} WHERE id=:id"); // : = menghindari sql injection
         $this->db->bind("id", $id);
         return $this->db->single();
     }
 
-    public function tambahDataSiswa($data) 
+    public function tambahDataSiswa($data)
     {
         $query = "INSERT INTO siswa 
                     VALUES 
