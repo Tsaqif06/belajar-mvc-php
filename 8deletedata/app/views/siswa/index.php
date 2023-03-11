@@ -1,26 +1,31 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-6">
-            <?php Flasher::flash();?>
+            <?php Flasher::flash(); ?>
         </div>
     </div>
 
     <div class="row">
         <div class="col-6">
-            <button type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#add">
                 Tambah Data Siswa
             </button>
             <h3>Daftar Siswa</h3>
         </div>
     </div>
-    <ul class="list-group" style="width: 400px">
+    <ul class="list-group d-flex" style="width: 400px">
         <?php foreach ($data['siswa'] as $row) : ?>
             <li class="list-group-item d-flex justify-content-between">
                 <?= $row['nama'] ?>
                 <div class="badge">
                     <a href="<?= BASEURL ?>siswa/detail/<?= $row['id'] ?>" class="badge text-bg-primary">Detail</a>
-                    <a href="<?= BASEURL ?>siswa/hapus/<?= $row['id'] ?>" class="badge text-bg-danger">Hapus</a>
-
+                    <!-- <a class="my-3 badge text-bg-danger" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#delete">
+                        Hapus
+                    </a> -->
+                    <a class="my-3 badge text-bg-success" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#add">
+                        Edit
+                    </a>
+                    <a href="<?= BASEURL ?>siswa/hapus/<?= $row['id'] ?>" class="badge text-bg-danger" onclick="return confirm('Yakin?')">Hapus</a>
                 </div>
             </li>
         <?php endforeach ?>
@@ -29,7 +34,25 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Data Siswa</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Yakin Ingin Hapus?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <a href="<?= BASEURL ?>siswa/hapus/<?= $row['id'] ?>"><button type="submit" class="btn btn-danger">Yakin</button></a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div> -->
+<div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
