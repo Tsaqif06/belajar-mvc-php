@@ -27,7 +27,7 @@ class Siswa_model
         // PDO = PHP Data Object
         // data source name / identitas server
         $dsn = "mysql:host=localhost;dbname=belajarphpmvc";
-        
+
         try {
             $this->dbh = new PDO($dsn, 'root', '');
         } catch (PDOException $e) {
@@ -41,5 +41,6 @@ class Siswa_model
         $this->stmt = $this->dbh->prepare("SELECT * FROM siswa");
         $this->stmt->execute();
         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+
     }
 }
